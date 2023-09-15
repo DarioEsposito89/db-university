@@ -11,9 +11,9 @@ WHERE `cfu` > 10
 ORDER BY `cfu`ASC;
 
 --3. Selezionare tutti gli studenti che hanno più di 30 anni
-SELECT *, DATE_FORMAT(FROM_DAYS(DATEDIFF(NOW(),`date_of_birth`)), '%Y') + 0 AS `age`
+SELECT *, SUBDATE(CURRENT_DATE, INTERVAL 10 DAY)
 FROM `students`
-WHERE  DATE_FORMAT(FROM_DAYS(DATEDIFF(NOW(),`date_of_birth`)), '%Y') + 0  > 30
+WHERE  YEAR(CURRENT_DATE) - YEAR(`date_of_birth`) > 30
 ORDER BY `date_of_birth`DESC;
 
 --4. Selezionare tutti i corsi del primo semestre del primo anno di un qualsiasi corso di laurea (286)

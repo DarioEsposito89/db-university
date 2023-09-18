@@ -115,53 +115,7 @@ ORDER BY
 
 --7. BONUS: Selezionare per ogni studente quanti tentativi d’esame ha sostenuto per superare ciascuno dei suoi esami
 
-SELECT `students`.`name` as `student_name`,
-        `students`.`surname` as `student_surname`,
-        `exam_student`.`student_id`  AS `student_id`,
-        `exam_student`.`exam_id` AS `exam_id_par_student`,
-        `exam_student`.`vote`AS `students_vote`,
-        `exams`.`course_id` AS `course_id`
-
-FROM `students`
-INNER JOIN `exam_student`
-        ON `exam_student`.`student_id` = `students`.`id` 
-        
-INNER JOIN `exams`
-        ON `exams`.`id` = `exam_student`.`exam_id`
-        
-GROUP BY `student_id`,
-        `exam_id_par_student` 
-        HAVING `students_vote`< 18  
-ORDER BY `students_vote` ASC
-
-
-SELECT `students`.`name` as `student_name`,
-        `students`.`surname` as `student_surname`,
-        `exam_student`.`student_id`  AS `student_id`,
-        `exam_student`.`exam_id` AS `exam_id`,
-        `exam_student`.`vote`AS `students_vote`,
-        `exams`.`course_id` AS `course_id`,
-
-
-FROM `students`
-INNER JOIN `exam_student`
-        ON `exam_student`.`student_id` = `students`.`id` 
-        
-INNER JOIN `exams`
-        ON `exams`.`id` = `exam_student`.`exam_id` 
-
-GROUP BY `student_id`,
-        `course_id`,
-        `students_vote`,
-        `exam_id` 
-#HAVING ?         
-
-ORDER BY `exams`.`course_id` ASC,
-        `students`.`id`,
-        `exams`.`id`;
-
-# BONUS: Selezionare per ogni studente quanti tentativi d’esame ha sostenuto per
-# superare ciascuno dei suoi esami
+-- BONUS: filtrare i tentativi con voto minimo 18
 SELECT `students`.`id` AS `studente`,
 `courses`.`id` AS `corso`,
 COUNT(`exams`.`id`),

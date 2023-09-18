@@ -118,7 +118,7 @@ ORDER BY
 -- BONUS: filtrare i tentativi con voto minimo 18
 SELECT `students`.`id` AS `studente`,
 `courses`.`id` AS `corso`,
-COUNT(`exams`.`id`),
+COUNT(`exams`.`id`) AS `appelli_d'esame`,
 MAX(`exam_student`.`vote`) as `voto_migliore`
 FROM `students`
 JOIN `exam_student`
